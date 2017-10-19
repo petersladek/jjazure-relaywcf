@@ -11,6 +11,7 @@ using System.Drawing.Imaging;
 using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Web;
 using System.Configuration;
+using System.Security.Policy;
 
 namespace Microsoft.ServiceBus.Samples
 {
@@ -54,11 +55,17 @@ namespace Microsoft.ServiceBus.Samples
             string serviceNamespace = ConfigurationManager.AppSettings["RelayServiceNamespace"];
             Uri address = ServiceBusEnvironment.CreateServiceUri("https", serviceNamespace, "Image");
 
+            string tokenForClient = SharedAccessSignatureTokenProvider.GetSharedAccessSignature(ConfigurationManager.AppSettings["ClientKeyName"], ConfigurationManager.AppSettings["ClientKey"], address.ToString(), new TimeSpan(0, 1, 1, 1));
+
             WebServiceHost host = new WebServiceHost(typeof(ImageService), address);
             host.Open();
 
             Console.WriteLine("Copy the following address into a browser to see the image: ");
             Console.WriteLine(address + "GetImage");
+            Console.WriteLine();
+            Console.WriteLine("Access token: ");
+            Console.WriteLine(tokenForClient);
+            Console.WriteLine("Add this token into Authorization header (valid for 1 hour only)");
             Console.WriteLine();
             Console.WriteLine("Press [Enter] to exit");
             Console.ReadLine();
