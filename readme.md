@@ -1,5 +1,8 @@
 # WCF service with Service Bus Relay
-WCF Service for getting image
+WCF Service for getting image via <a href="https://docs.microsoft.com/en-us/azure/service-bus-relay/relay-what-is-it">Azure Relay</a>.
+The reason is to "publish" .Net REST WCF service via Azure Relay. 
+There no direct publishing of this service. Service is using WCF Relay binding to publish it. You need no firewall port publishing, communication is started from backend via HTTPS.
+Client is calling Azure Relay service.
 
 ## Create Service Bus Relay
 Simply create in Azure portal new service called Relay
@@ -20,3 +23,4 @@ Section appSettings
 
 ## Test service
 Run browser with your url, my example: https://jjrelay.servicebus.windows.net/Image/GetImage
+You will get image.
