@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Microsoft.ServiceBus.Samples.ImageService" CodeBehind="ImageService.svc.cs" %>
