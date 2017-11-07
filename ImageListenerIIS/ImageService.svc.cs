@@ -8,6 +8,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Web.Hosting;
 
 // !!!!!!!!!!!!!!!!!!!
 // ! NOT WORKING NOW !
@@ -23,13 +24,13 @@ namespace Microsoft.ServiceBus.Samples
     [ServiceBehavior(Name = "ImageService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
     public class ImageService : IImageContract
     {
-        const string imageFileName = "image.jpg";
+        string imageFilePath = Path.Combine(HostingEnvironment.ApplicationPhysicalPath, "App_Data", "image.jpg");
 
         Image bitmap;
 
         public ImageService()
         {
-            this.bitmap = Image.FromFile(imageFileName);
+            this.bitmap = Image.FromFile(imageFilePath);
         }
 
         public Stream GetImage()

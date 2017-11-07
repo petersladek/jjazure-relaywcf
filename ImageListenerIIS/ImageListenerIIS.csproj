@@ -98,6 +98,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\image.jpg" />
     <Content Include="ImageService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -110,9 +111,7 @@
     <Compile Include="IImageContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
